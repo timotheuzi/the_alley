@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class  ThymeleafController {
 
-	@Autowired
 	UserRepo uRepo;
-	
-	@Autowired
+
 	Methods methods;
 
 	//default index/user creation page
@@ -33,7 +31,7 @@ public class  ThymeleafController {
     @GetMapping("/home")
     public String home(@RequestParam(name="name", required=false) String name, Model model)
 	{
-		model.addAttribute("name", uRepo.findByName(name).getName());
+		//model.addAttribute("name", uRepo.findByName(name).getName());
 		model.addAttribute("mapInfo", DarknessConstants.map_0);
 		model.addAttribute("npcInfo", DarknessConstants.npc_0);
 		return "home";
@@ -43,7 +41,7 @@ public class  ThymeleafController {
     @GetMapping("/template_1")
     public String template_1(@RequestParam(name="name", required=true) String name, Model model) 
 	{
-		model.addAttribute("name", uRepo.findByName(name).getName());
+		//model.addAttribute("name", uRepo.findByName(name).getName());
 		return "template_1";
     }
 }

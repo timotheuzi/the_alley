@@ -1,5 +1,6 @@
 package the.alley.utils;
 
+import reactor.core.publisher.Flux;
 import the.alley.controller.ThymeleafController;
 import the.alley.db.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +86,8 @@ public class Methods {
 
 	public Boolean createNewUser(String name) {
 		try {
-			UserDB result = userRepos.findByName(name);
+			Flux<UserDB> result = userRepos.findByName(name);
+			/*result.toStream().toList().get(name).getName()
 			result.getName();
 			result.getLvl();
 			result.getMoney();
@@ -96,7 +98,7 @@ public class Methods {
 			result.getLocation();
 			result.getHp();
 			String test = result.toString();
-			System.out.println("record does exist:" + test);
+			System.out.println("record does exist:" + test);*/
 			return false;
 		} catch (Exception e) {
 			System.out.println("record doesnt exist, creating it");
@@ -115,7 +117,8 @@ public class Methods {
 		return true;
 	}
 
-	public HashMap<String, Integer> getStats(String name) {
+	//TODO get stats totally broken
+	/*public HashMap<String, Integer> getStats(String name) {
 		HashMap<String, Integer> stats = new HashMap<String, Integer>();
 		stats.put("ID", userRepos.findByName(name).getId());
 		stats.put("attack", userRepos.findByName(name).getAttack());
@@ -125,16 +128,16 @@ public class Methods {
 		stats.put("lvl", userRepos.findByName(name).getLvl());
 		stats.put("money", userRepos.findByName(name).getMoney());
 
-		/*else {
+		else {
 			stats.put("ID", npcRepos.findByName(name).getId());
 			stats.put("attack", npcRepos.findByName(name).getAttack());
 			stats.put("defense", npcRepos.findByName(name).getDefense());
 			stats.put("hp", npcRepos.findByName(name).getHp());
 			stats.put("location", npcRepos.findByName(name).getLocation());
 			// stats.put("name", npcRepos.findByName(name).);
-		}*/
+		}
 		return stats;
-	}
+	}*/
 
 	// counters
 	public Integer CountMaps() {
@@ -146,13 +149,14 @@ public class Methods {
 		return count;
 	}
 
-	public Integer CountUsers() {
+	//todo count users totally broken
+	/*public Integer CountUsers() {
 		Integer count = 0;
-		for (UserDB userdb : userRepos.findAll()) {
+		for (Flux<UserDB> userdb : userRepos.findAll()) {
 			count++;
 		}
 		return count; // + "response" + response;
-	}
+	}*/
 
 	public Integer CountItems() {
 		Integer count = 0;
@@ -184,7 +188,8 @@ public class Methods {
 		return npcs.toString();
 	}
 
-	public String CountUsersByLocation(int location) {
+	//todo totally broken
+	/*public String CountUsersByLocation(int location) {
 		StringWriter users = new StringWriter();
 		int count = 0;
 		for (UserDB userDB : userRepos.findAll()) {
@@ -194,9 +199,10 @@ public class Methods {
 			}
 		}
 		return users.toString();
-	}
+	}*/
 
-	public HashMap<Integer, String> ShowUsersInLocation(Integer index) {
+	//todo broken
+	/*public HashMap<Integer, String> ShowUsersInLocation(Integer index) {
 		HashMap<Integer, String> users = new HashMap<Integer, String>();
 		for (UserDB userDB : userRepos.findAll()) {
 			if (userDB.getLocation() == index) {
@@ -204,7 +210,7 @@ public class Methods {
 			}
 		}
 		return users;
-	}
+	}*/
 
 	public HashMap<Integer, String> ShowNpcsInLocation(Integer index) {
 		HashMap<Integer, String> npcs = new HashMap<Integer, String>();
@@ -224,7 +230,7 @@ public class Methods {
 		Double npcToMove = Math.random() * ((CountNpcs()));
 		int temp = npcToMove.intValue();
 		npcRepos.findById(temp).get().setLocation(location.intValue());
-		userRepos.findByName(name).setLocation(location.intValue());
+		//userRepos.findByName(name).setLocation(location.intValue());
 		// Model model = null;
 		// templateController.template_1(name, model);
 		return location.intValue();
@@ -233,13 +239,13 @@ public class Methods {
 	public Map<Integer, String> mapStatus(Integer mapIndex) {
 		HashMap<Integer, String> mapObj = new HashMap<Integer, String>();
 		int count = 0;
-		Iterator<Map.Entry<Integer, String>> itUser = (ShowUsersInLocation(mapIndex)).entrySet().iterator();
-		while (itUser.hasNext()) {
+		//Iterator<Map.Entry<Integer, String>> itUser = (ShowUsersInLocation(mapIndex)).entrySet().iterator();
+		/*while (itUser.hasNext()) {
 			Map.Entry<Integer, String> pair = itUser.next();
 			mapObj.put(count, pair.getValue());
 			itUser.remove(); // avoids a ConcurrentModificationException
 			count++;
-		}
+		}*/
 		Iterator<Map.Entry<Integer, String>> itNpc = (ShowNpcsInLocation(mapIndex)).entrySet().iterator();
 		while (itNpc.hasNext()) {
 			Map.Entry<Integer, String> pair = itNpc.next();
@@ -256,17 +262,17 @@ public class Methods {
 		return mapObj;
 	}
 	//// get individual user or npc
-	public String getUserByName(String name) {
+	/*public String getUserByName(String name) {
 		return userRepos.findByName(name).getName();
-	}
+	}*/
 
 	public String getNpcByName(String name) {
 		return npcRepos.findByName(name).getName();
 	}
 
-	public String getUserByIndex(Integer index) {
+	/*public String getUserByIndex(Integer index) {
 		return userRepos.findById(index).get().getName();
-	}
+	}*/
 
 	public String getNpcByIndex(Integer index) {
 		return npcRepos.findById(index).get().getName();
