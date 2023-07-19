@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "msg_cache")
 public class CacheDB {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int id;
 	private String mapName;
 	private String currentRoomStatus;
