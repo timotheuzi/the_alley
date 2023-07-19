@@ -1,28 +1,52 @@
 plugins {
-	id 'java'
+    id 'java'
+    id "groovy"
+    id 'org.springframework.boot' version '3.1.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id "org.hibernate.orm" version "6.2.6.Final"
+    id "name.remal.lombok" version "2.2.1"
+    id("org.openapi.generator") version "7.0.0-beta"
 }
 
 group = 'the.alley'
-version = '0.0.1-SNAPSHOT'
-
-java {
-	sourceCompatibility = '17'
-}
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = '17'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
-
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter:3.1.1'
-	implementation 'org.springframework.boot:spring-boot-starter-webflux:3.1.1'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.1'
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:3.1.1'
-	runtimeOnly 'com.h2database:h2:2.2.220'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.1'
-	testImplementation 'io.projectreactor:reactor-test:3.5.8'
-}
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    ///use webflux reactive and netty for built in server
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation ('org.springframework.boot:spring-boot-starter-reactor-netty')
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+    //spring fox shit
+    // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+    //DB tings
+    // https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+
+	//jquery
+	implementation 'org.webjars:jquery:3.5.0'
+    //JSON
+	implementation 'org.json:json:20230618'
+
+	//H2 in memory test database
+    runtimeOnly 'com.h2database:h2:2.2.220'
+
+	//testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+    // https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testImplementation 'org.mockito:mockito-core:5.4.0'
+
+}
 tasks.named('test') {
 	useJUnitPlatform()
 }
