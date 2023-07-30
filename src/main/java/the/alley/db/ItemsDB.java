@@ -2,6 +2,7 @@ package the.alley.db;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
+@Document
 @Table(name = "items")
 public class ItemsDB {
 	@Id

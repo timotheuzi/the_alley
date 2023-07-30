@@ -2,12 +2,14 @@ package the.alley.db;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 //user objects
 
 @Getter
 @Setter
-@Entity
+@Document
 @Table(name = "users")
 public class UserDB {
 	@Id

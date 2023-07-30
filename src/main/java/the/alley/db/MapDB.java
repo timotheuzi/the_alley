@@ -2,18 +2,15 @@ package the.alley.db;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 //map tables
 
 @Getter
 @Setter
-@Entity
+@Document
 @Table(name = "map")
 public class MapDB {
 	@Id

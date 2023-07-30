@@ -123,9 +123,9 @@ public class EngineEndpoints {
 	public Integer CountMaps() {
 		String result = "";
 		Integer count = 0;
-		for (MapDB mapDB : maprepo.findAll()) {
+		/*for (MapDB mapDB : maprepo.findAll()) {
 			count++;
-		}
+		}*/
 		return count;
 	}
 

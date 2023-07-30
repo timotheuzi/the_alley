@@ -1,14 +1,19 @@
 package the.alley.db;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 //item table
 
-@Entity
+@Getter
+@Setter
+@Document
 @Table(name = "msg_cache")
 public class CacheDB {
 	@Id

@@ -1,10 +1,9 @@
 package the.alley.db;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Mono;
 
-//import com.darkness.db.npcDB;
-
-public interface NpcRepo extends CrudRepository<NpcDB, Integer> {
-	NpcDB findByName(String name);
+public interface NpcRepo extends ReactiveCrudRepository<NpcDB, Integer> {
+	Mono<NpcDB> findByName(String name);
 	NpcDB findByLocation(Integer location);
 }
