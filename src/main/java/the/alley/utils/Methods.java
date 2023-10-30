@@ -2,7 +2,7 @@ package the.alley.utils;
 
 import reactor.core.publisher.Flux;
 import the.alley.controller.ThymeleafController;
-import the.alley.db.*;
+import the.alley.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.StringWriter;

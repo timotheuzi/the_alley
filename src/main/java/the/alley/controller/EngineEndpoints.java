@@ -1,19 +1,15 @@
 package the.alley.controller;
 
-import reactor.core.CoreSubscriber;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import the.alley.db.UserRepo;
-import the.alley.db.UserDB;
-import the.alley.db.CacheRepo;
-import the.alley.db.MapRepo;
-import the.alley.db.MapDB;
+import the.alley.model.UserRepo;
+import the.alley.model.CacheRepo;
+import the.alley.model.MapRepo;
 import the.alley.utils.DarknessConstants;
 import the.alley.utils.Methods;
 import org.json.JSONException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,14 +20,19 @@ import java.util.Map;
 @RestController
 public class EngineEndpoints {
 
+	@Autowired
 	UserRepo userRepo;
 
+	@Autowired
 	MapRepo maprepo;
 
+	@Autowired
 	Methods Methods;
 
+	@Autowired
 	CacheRepo cacheRepos;
 
+	@Autowired
 	ThymeleafController tempController;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/createNewUser", produces = MediaType.TEXT_HTML_VALUE)

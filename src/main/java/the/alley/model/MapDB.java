@@ -1,28 +1,24 @@
-package the.alley.db;
+package the.alley.model;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
-//user objects
+
+//map tables
 
 @Getter
 @Setter
 @Document
-@Table(name = "users")
-public class UserDB {
+@Table(name = "map")
+public class MapDB {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;// test
+	private int id;
 	private String name;
-	private Integer lvl;
-	private Integer money;
-	private Integer exp;
-	private Integer attack;
-	private Integer defense;
 	private String description;
-	private Integer location;
-	private Integer hp;
-
+	private Integer items;
+	private Integer npcs;
+	private Integer users;
 }

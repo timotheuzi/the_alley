@@ -1,4 +1,4 @@
-package the.alley.db;
+package the.alley.model;
 
 import lombok.Getter;
 import lombok.Setter;
