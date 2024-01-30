@@ -1,0 +1,16 @@
+
+
+@RunWith(SpringRunner.class)
+@SpringootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+@AutoConfigureMockMvc
+public class The AlleyAppIntegrationTest{
+  @LocalServerPort
+  private int port
+  @Autowired
+  private TestRestTemplate restTemplate
+
+  @Test 
+  public void getAll() throws Exception{
+    ResponseEntity<List> response = this.restTemplate.getfor(url:"", List.class)
+    assertThat(response.getStatusCode(), equalTo(HTTPStatus.OK))
+}
