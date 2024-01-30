@@ -1,9 +1,12 @@
+package the.alley.the_alley;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(SpringRunner.class)
 @SpringootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 @AutoConfigureMockMvc
-public class The AlleyAppIntegrationTest{
+public class TheAlleyApplicationTests{
   @LocalServerPort
   private int port
   @Autowired
