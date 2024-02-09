@@ -52,7 +52,7 @@ dependencies {
 
 
     //compile libs.springBoot
-    //compile libs.springfoxPetstore
+    //compile libs.
     //compile libs.springfoxSwagger2
     implementation "io.springfox:springfox-swagger1:3.0.0"
     implementation "io.springfox:springfox-oas:3.0.0"
