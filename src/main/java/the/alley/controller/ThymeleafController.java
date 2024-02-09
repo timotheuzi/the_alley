@@ -6,7 +6,7 @@ import the.alley.utils.Methods;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //serves up thymeleaf assisted web pages
@@ -18,7 +18,7 @@ public class  ThymeleafController {
 	Methods methods;
 
 	//default index/user creation page
-	@RequestMapping("/")
+	@GetMapping("/")
     public String index()
 	{
 		methods.initializeMapValues();

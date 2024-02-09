@@ -15,9 +15,13 @@ public class SpringFoxConfig {
     public static Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("the.alley.controller"))
                 .paths(PathSelectors.any())
                 .build();
+    }
+    @Bean
+    public the.alley.utils.Methods methods() {
+        return new the.alley.utils.Methods(); // rtest
     }
 
 }

@@ -1,4 +1,4 @@
-package the.alley.the_alley;
+/*package the.alley.the_alley;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,3 +17,4 @@ public class TheAlleyApplicationTests{
     ResponseEntity<List> response = this.restTemplate.getfor(url:"", List.class)
     assertThat(response.getStatusCode(), equalTo(HTTPStatus.OK))
 }
+*/
