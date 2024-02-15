@@ -2,7 +2,7 @@ package the.alley.utils;
 
 import reactor.core.publisher.Flux;
 import the.alley.controller.ThymeleafController;
-import the.alley.db.*;
+import the.alley.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.StringWriter;
@@ -143,9 +143,9 @@ public class Methods {
 	public Integer CountMaps() {
 		// String result = "";
 		Integer count = 0;
-		for (MapDB mapDB : mapRepos.findAll()) {
-			count++;
-		}
+		//Flux<MapDB> mapDB : mapRepos.findAll().next()) {
+		//	count++;
+		//}
 		return count;
 	}
 
@@ -160,31 +160,31 @@ public class Methods {
 
 	public Integer CountItems() {
 		Integer count = 0;
-		for (ItemsDB itemdb : itemsRepos.findAll()) {
-			count++;
-		}
+		//for (ItemsDB itemdb : itemsRepos.findAll()) {
+		//	count++;
+		//}
 		return count;
 	}
 
 	public Integer CountNpcs()
 	{
 		Integer count = 0;
-		for(NpcDB itemdb : npcRepos.findAll())
+		/*for(NpcDB itemdb : npcRepos.findAll())
 		{
 				count++;
-		}
+		}*/
 		return count;
 	}
 
 	public String CountNpcsByLocation(Integer location) {
 		StringWriter npcs = new StringWriter();
 		Integer count = 0;
-		for (NpcDB npcDB : npcRepos.findAll()) {
+		/*for (NpcDB npcDB : npcRepos.findAll()) {
 			if (npcDB.getLocation() == location) {
 				npcs.write(npcDB.getName() + ",");
 				count++;
 			}
-		}
+		}*/
 		return npcs.toString();
 	}
 
@@ -214,11 +214,11 @@ public class Methods {
 
 	public HashMap<Integer, String> ShowNpcsInLocation(Integer index) {
 		HashMap<Integer, String> npcs = new HashMap<Integer, String>();
-		for (NpcDB npcDB : npcRepos.findAll()) {
+		/*for (NpcDB npcDB : npcRepos.findAll()) {
 			if (npcDB.getLocation() == index) {
 				npcs.put(npcDB.getId(), npcDB.getName());
 			}
-		}
+		}*/
 		return npcs;
 
 	}
@@ -229,7 +229,7 @@ public class Methods {
 		/* random NPC generation and movement */
 		Double npcToMove = Math.random() * ((CountNpcs()));
 		int temp = npcToMove.intValue();
-		npcRepos.findById(temp).get().setLocation(location.intValue());
+		//npcRepos.findById(temp).get().setLocation(location.intValue());
 		//userRepos.findByName(name).setLocation(location.intValue());
 		// Model model = null;
 		// templateController.template_1(name, model);
@@ -267,7 +267,8 @@ public class Methods {
 	}*/
 
 	public String getNpcByName(String name) {
-		return npcRepos.findByName(name).getName();
+		return null;
+		//return npcRepos.findByName(name).getName();
 	}
 
 	/*public String getUserByIndex(Integer index) {
@@ -275,7 +276,8 @@ public class Methods {
 	}*/
 
 	public String getNpcByIndex(Integer index) {
-		return npcRepos.findById(index).get().getName();
+		return null;
+		//return npcRepos.findById(index).get().getName();
 	}
 
 	public String getStatus(String where) {

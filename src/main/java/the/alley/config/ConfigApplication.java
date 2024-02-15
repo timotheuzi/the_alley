@@ -1,4 +1,4 @@
-package the.alley.config;
+/*package the.alley.config;
 
 import the.alley.utils.Methods;
 import org.springframework.context.annotation.Bean;
@@ -24,4 +24,3 @@ public class ConfigApplication<config> {
 	public DataSource secondaryDataSource() {
 		return DataSourceBuilder.create().build();
 	}*/
-}

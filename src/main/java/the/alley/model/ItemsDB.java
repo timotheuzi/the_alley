@@ -1,15 +1,15 @@
-package the.alley.db;
+package the.alley.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 
 //item table
-
 @Getter
 @Setter
-@Entity
+@Document
 @Table(name = "items")
 public class ItemsDB {
 	@Id

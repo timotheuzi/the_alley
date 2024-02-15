@@ -8,15 +8,20 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableSwagger2
 @Configuration
+@EnableSwagger2
 public class SpringFoxConfig {
     @Bean
-    public Docket api() {
+    public static Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("the.alley.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
+    @Bean
+    public the.alley.utils.Methods methods() {
+        return new the.alley.utils.Methods(); // rtest
+    }
+
 }
