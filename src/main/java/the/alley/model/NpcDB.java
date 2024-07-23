@@ -1,22 +1,16 @@
 package the.alley.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import lombok.Data;
 import javax.persistence.*;
 
 //for NPC generation
-
-@Getter
-@Setter
-@Document
+@Data
+@Entity
 @Table(name = "npc")
 public class NpcDB {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private String name;
 	private String description;
 	private Integer attack;

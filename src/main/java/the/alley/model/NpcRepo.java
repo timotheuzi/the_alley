@@ -1,9 +1,10 @@
 package the.alley.model;
 
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
-import reactor.core.publisher.Mono;
+import org.springframework.data.repository.CrudRepository;
 
-public interface NpcRepo extends ReactiveCrudRepository<NpcDB, Integer> {
-	Mono<NpcDB> findByName(String name);
-	NpcDB findByLocation(Integer location);
+import java.util.List;
+
+public interface NpcRepo extends CrudRepository<NpcDB, Integer> {
+	//List<NpcDB> findByName(String name);
+	//NpcDB findByLocation(Integer location);
 }

@@ -1,35 +1,33 @@
 package the.alley.utils;
 
-import reactor.core.publisher.Flux;
-import the.alley.controller.ThymeleafController;
-import the.alley.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import the.alley.model.*;
 
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
+@Service
 public class Methods {
 
-	@Autowired
+	//@Autowired
 	UserRepo userRepos;
 
-	@Autowired
+	//@Autowired
 	MapRepo mapRepos;
 
-	@Autowired
+	//@Autowired
 	ItemsRepo itemsRepos;
 
-	@Autowired
+	//@Autowired
 	NpcRepo npcRepos;
 
-	@Autowired
-	CacheRepo cacheRepos;
+	//@Autowired
+	//CacheRepo cacheRepos;
 
-	@Autowired
-	ThymeleafController templateController;
+	//@Autowired
+	//ThymeleafController templateController;
 
 	public void initializeMapValues() {
 		//Integer mapCount = CountMaps();
@@ -86,7 +84,7 @@ public class Methods {
 
 	public Boolean createNewUser(String name) {
 		try {
-			Flux<UserDB> result = userRepos.findByName(name);
+			UserDB result = userRepos.findByName(name);
 			/*result.toStream().toList().get(name).getName()
 			result.getName();
 			result.getLvl();

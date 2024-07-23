@@ -1,21 +1,17 @@
 package the.alley.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Data;
+import javax.persistence.*;
+
 
 //item table
-@Getter
-@Setter
-@Document
-@Table(name = "msg_cache")
+@Data
+@Entity
+@Table(name = "cache")
 public class CacheDB {
 	@Id
-	@GeneratedValue
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private String mapName;
 	private String currentRoomStatus;
 }

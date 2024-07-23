@@ -1,20 +1,19 @@
 package the.alley.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 
 //item table
-@Getter
-@Setter
-@Document
+@Data
+@Entity
 @Table(name = "items")
 public class ItemsDB {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private String name;
 	private String description;
 	private Integer attack;

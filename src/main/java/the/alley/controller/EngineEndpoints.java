@@ -1,15 +1,11 @@
 package the.alley.controller;
 
-import reactor.core.publisher.Mono;
-import the.alley.model.UserRepo;
-import the.alley.model.CacheRepo;
-import the.alley.model.MapRepo;
-import the.alley.utils.DarknessConstants;
-import the.alley.utils.Methods;
-import org.json.JSONException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import reactor.core.publisher.Mono;
+import the.alley.utils.DarknessConstants;
+import the.alley.utils.Methods;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,20 +16,20 @@ import java.util.Map;
 @RestController
 public class EngineEndpoints {
 
-	@Autowired
-	UserRepo userRepo;
+	//@Autowired
+	//UserRepo UserRepo;
 
-	@Autowired
-	MapRepo maprepo;
+	//@Autowired
+	//MapRepo maprepo;
 
 	@Autowired
 	Methods Methods;
 
-	@Autowired
-	CacheRepo cacheRepos;
+	//@Autowired
+	//CacheRepo cacheRepos;
 
-	@Autowired
-	ThymeleafController tempController;
+	//@Autowired
+	//ThymeleafController tempController;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/createNewUser", produces = MediaType.TEXT_HTML_VALUE)
 	public Mono<String> createNewUser(@RequestParam(name = "name", required = true) String name) {
@@ -149,7 +145,7 @@ public class EngineEndpoints {
 	@RequestMapping(method = RequestMethod.GET, path = "/variousInput", produces = MediaType.APPLICATION_JSON_VALUE) // consumes
 	public String various(@RequestParam(name = "name", required = true) String name,
 					   @RequestParam(name = "value", required = false, defaultValue = "") String value,
-					   @RequestParam(name = "location", required = false, defaultValue = "0") Integer location) throws JSONException {
+					   @RequestParam(name = "location", required = false, defaultValue = "0") Integer location)  {
 		if (!value.isEmpty()) {
 			value = value.replaceAll(",", "");
 			//todo caching

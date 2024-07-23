@@ -1,20 +1,17 @@
 package the.alley.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.persistence.*;
-//user objects
 
-@Getter
-@Setter
-@Document
+@Data
+@Entity
 @Table(name = "users")
 public class UserDB {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;// test
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;// test
 	private String name;
 	private Integer lvl;
 	private Integer money;

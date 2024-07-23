@@ -1,13 +1,12 @@
 package the.alley.controller;
 
-import the.alley.model.UserRepo;
-import the.alley.utils.DarknessConstants;
-import the.alley.utils.Methods;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import the.alley.model.UserRepo;
+import the.alley.utils.DarknessConstants;
+import the.alley.utils.Methods;
 
 //serves up thymeleaf assisted web pages
 @Controller
