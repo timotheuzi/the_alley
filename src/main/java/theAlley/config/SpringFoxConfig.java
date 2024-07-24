@@ -1,13 +1,13 @@
-package the.alley.config;
+package theAlley.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import theAlley.service.EngineService;
 
 @Configuration
 public class SpringFoxConfig {
     @Bean
-    public the.alley.utils.Methods methods() {
-        return new the.alley.utils.Methods(); // rtest
+    public EngineService engineService() {
+        return new EngineService(); // rtest
     }
-
 }
