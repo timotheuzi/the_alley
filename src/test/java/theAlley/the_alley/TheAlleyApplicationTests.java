@@ -1,13 +1,12 @@
-package the.alley.the_alley;
+package theAlley.the_alley;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class TheAlleyApplicationTests {
 
-	//@Test
-	//void contextLoads() {
-	//}
+    //@Test
+    //void contextLoads() {
+    //}
 
 }

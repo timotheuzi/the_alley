@@ -1,4 +1,4 @@
-package the.alley.exception;
+package theAlley.exception;
 
 import org.springframework.http.HttpStatus;
 
