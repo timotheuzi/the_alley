@@ -1,4 +1,4 @@
-# The Alley - Makefile
+# Go-Shheissee - Makefile
 
 # Go parameters
 GOCMD=go
@@ -10,37 +10,44 @@ GOMOD=$(GOCMD) mod
 GOFMT=$(GOCMD) fmt
 GOVET=$(GOCMD) vet
 
+# Go environment variables for compatibility with module cache
+export GOPATH:=$(HOME)/go
+
 # Main package
 MAIN_PACKAGE=./cmd/shheissee
 
-# Binary name
-BINARY_NAME=the_alley
-BINARY_UNIX=$(BINARY_NAME)_unix
+# Binary name and distribution directory
+BINARY_NAME=go-shheissee
+DIST_DIR=dist
 
 # Build targets
-.PHONY: all build clean test coverage run deps fmt vet help
+.PHONY: all build clean test coverage run deps fmt vet help create-dist
 
 all: test build
 
+# Create distribution directory
+create-dist:
+	mkdir -p $(DIST_DIR)
+
 # Build the binary
-build:
-	$(GOBUILD) -o $(BINARY_NAME) -v $(MAIN_PACKAGE)
+build: create-dist
+	$(GOBUILD) -o $(DIST_DIR)/$(BINARY_NAME) -v $(MAIN_PACKAGE)
 
 # Build with race detection
-build-race:
-	$(GOBUILD) -race -o $(BINARY_NAME) -v $(MAIN_PACKAGE)
+build-race: create-dist
+	$(GOBUILD) -race -o $(DIST_DIR)/$(BINARY_NAME) -v $(MAIN_PACKAGE)
 
 # Build for Linux
-build-linux:
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_NAME)-linux-amd64 -v $(MAIN_PACKAGE)
+build-linux: create-dist
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(DIST_DIR)/$(BINARY_NAME)-linux-amd64 -v $(MAIN_PACKAGE)
 
 # Build for Windows
-build-windows:
-	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 $(GOBUILD) -o $(BINARY_NAME)-windows-amd64.exe -v $(MAIN_PACKAGE)
+build-windows: create-dist
+	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 $(GOBUILD) -o $(DIST_DIR)/$(BINARY_NAME)-windows-amd64.exe -v $(MAIN_PACKAGE)
 
 # Build for macOS
-build-darwin:
-	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 $(GOBUILD) -o $(BINARY_NAME)-darwin-amd64 -v $(MAIN_PACKAGE)
+build-darwin: create-dist
+	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 $(GOBUILD) -o $(DIST_DIR)/$(BINARY_NAME)-darwin-amd64 -v $(MAIN_PACKAGE)
 
 # Cross-platform builds
 build-all: build-linux build-windows build-darwin
@@ -48,12 +55,14 @@ build-all: build-linux build-windows build-darwin
 # Clean build files
 clean:
 	$(GOCLEAN)
+	rm -rf $(DIST_DIR)
 	rm -f $(BINARY_NAME)
 	rm -f $(BINARY_NAME)-*
 
 # Disk clean - deep clean including logs and generated files
 disk-clean:
 	$(GOCLEAN)
+	rm -rf $(DIST_DIR)
 	rm -rf $(BINARY_NAME)
 	rm -rf $(BINARY_NAME)-*
 	rm -rf coverage.out
@@ -115,7 +124,14 @@ scan:
 # Install system dependencies (Linux)
 install-deps:
 	@echo "Installing system dependencies..."
-	@if command -v apt-get >/dev/null 2>&1; then \
+	@if grep -q "ID=org.freedesktop.platform" /etc/os-release; then \
+		echo "Running in Flatpak environment. System dependencies must be declared in the Flatpak manifest."; \
+		echo "Ensure the manifest includes permissions for:"; \
+		echo "  - Network (to use nmap and iwlist)"; \
+		echo "  - Bluetooth (if available)"; \
+		echo "Required packages: wireless-tools, nmap, bluez, bluez-tools"; \
+		echo "Skipping system installation."; \
+	elif command -v apt-get >/dev/null 2>&1; then \
 		sudo apt-get update && sudo apt-get install -y wireless-tools nmap bluetooth bluez bluez-tools; \
 	elif command -v dnf >/dev/null 2>&1; then \
 		sudo dnf install -y wireless-tools nmap bluez bluez-tools; \
@@ -128,7 +144,7 @@ install-deps:
 		echo "  - bluez bluez-tools (bluetoothctl)"; \
 		exit 1; \
 	fi
-	@echo "System dependencies installed."
+	@echo "System dependencies installed (if applicable)."
 
 # Docker build
 docker-build:
@@ -140,7 +156,7 @@ docker-run:
 
 # Help
 help:
-	@echo "The Alley - Makefile Help"
+	@echo "Go-Shheissee - Makefile Help"
 	@echo ""
 	@echo "Available targets:"
 	@echo "  build          Build the binary"
@@ -167,7 +183,7 @@ help:
 	@echo "  help           Show this help message"
 	@echo ""
 	@echo "Usage examples:"
-	@echo "  make build && ./the_alley              # Build and run interactively"
+	@echo "  make build && ./go-shheissee              # Build and run interactively"
 	@echo "  make run-monitor                       # Build and start monitoring"
 	@echo "  make build-all                         # Cross-platform build"
 	@echo "  make check                             # Run all code checks"

@@ -44,7 +44,7 @@ func main() {
 	defer attackDetector.Close()
 
 	consoleLogger := logging.NewConsoleLogger()
-	startupLogger.LogInfo("The Alley Security Monitor initialized")
+	startupLogger.LogInfo("Go-Shheissee Security Monitor initialized")
 
 	// Initialize web server
 	webServer := web.NewWebServer(cfg.WebServerPort, "web", startupLogger)
@@ -69,7 +69,7 @@ func main() {
 	}()
 
 	// Display welcome message
-	fmt.Printf("%sThe Alley Security Monitor initialized successfully!%s\n", models.ColorGreen, models.ColorReset)
+	fmt.Printf("%sGo-Shheissee Security Monitor initialized successfully!%s\n", models.ColorGreen, models.ColorReset)
 	fmt.Printf("%sWeb interface available at: http://localhost:%d%s\n", models.ColorBlue, cfg.WebServerPort, models.ColorReset)
 
 	// Run main menu loop
@@ -286,8 +286,8 @@ func runMainMenu(ad *detector.AttackDetector, consoleLogger *logging.ConsoleLogg
 			waitForEnter()
 
 		case "7":
-			fmt.Println("\033[32mExiting The Alley Security Monitor. Goodbye!\033[0m")
-			logger.LogInfo("The Alley Security Monitor shutdown by user")
+			fmt.Println("\033[32mExiting Go-Shheissee Security Monitor. Goodbye!\033[0m")
+			logger.LogInfo("Go-Shheissee Security Monitor shutdown by user")
 			return
 
 		default:
@@ -303,8 +303,8 @@ func waitForEnter() {
 }
 
 func showHelp() {
-	fmt.Println("The Alley Security Monitor")
-	fmt.Println("Usage: the_alley [command]")
+	fmt.Println("Go-Shheissee Security Monitor")
+	fmt.Println("Usage: go-shheissee [command]")
 	fmt.Println()
 	fmt.Println("Commands:")
 	fmt.Println("  monitor, start    Start continuous security monitoring")

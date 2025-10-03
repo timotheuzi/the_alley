@@ -46,8 +46,6 @@ func NewLogger(logFile string) (*Logger, error) {
 
 // LogAttack logs attack information to the log file
 func (l *Logger) LogAttack(attack *models.Attack) {
-	severityColor := getSeverityColor(attack.Severity)
-
 	// Log to file with severity
 	l.Printf("[%s] %s: %s (Target: %s)",
 		attack.Severity.String(),

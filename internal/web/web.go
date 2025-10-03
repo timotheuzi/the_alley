@@ -112,11 +112,12 @@ func (ws *WebServer) handleAPIAttacks(w http.ResponseWriter, r *http.Request) {
 
 	// This would output JSON in a complete implementation
 	fmt.Fprintf(w, `{"attacks": [], "count": 0}`)
+	recentAttacks = recentAttacks // use the variable
 }
 
 // handleAPIStatus provides system status JSON
 func (ws *WebServer) handleAPIStatus(w http.ResponseWriter, r *http.Request) {
-	status := map[string]interface{}{
+	_ = map[string]interface{}{
 		"status":      "active",
 		"total_attacks": len(ws.attackLog),
 		"timestamp":   time.Now().Format(time.RFC3339),

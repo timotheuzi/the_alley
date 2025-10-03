@@ -2,6 +2,7 @@ package detector
 
 import (
 	"fmt"
+	"strings"
 	"sync"
 	"time"
 
@@ -312,7 +313,7 @@ func (ad *AttackDetector) displayBluetoothDevices(devices []models.BluetoothDevi
 
 	fmt.Printf("\n\033[32mFound %d Bluetooth device(s):\033[0m\n", len(devices))
 	fmt.Println("\033[1mMAC Address         Device Name                    RSSI   Status\033[0m")
-	fmt.Println("-" * 70)
+	fmt.Println(strings.Repeat("-", 70))
 
 	for _, device := range devices {
 		rssi := "N/A"

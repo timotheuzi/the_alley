@@ -3,7 +3,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/boboTheFoff/shheissee-go)](https://goreportcard.com/report/github.com/boboTheFoff/shheissee-go)
 [![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 
-# The Alley - Advanced Network & Wireless Intrusion Detection System
+# Go-Shheissee - Advanced Network & Wireless Intrusion Detection System
 
 An intelligent AI-powered system designed to detect and warn about network intrusions, Bluetooth attacks, and WiFi threats in real-time with a beautiful web user interface. This is a complete rewrite of the original Python version in Go for better performance and cross-platform compatibility.
 
