@@ -33,7 +33,6 @@ go.work
 bin/
 
 # Build artifacts
-dist/
 build/
 
 # IDEs and editors
